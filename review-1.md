@@ -14,6 +14,8 @@ description: >-
 
 组件化开发，就是将一个臃肿，复杂的单一工程的项目, 根据功能或者属性进行分解，拆分成为各个独立的功能模块或者组件 ; 然后根据项目和业务的需求，按照某种方式, 任意组织成一个拥有完整业务逻辑的工程。这就是所谓的组件化开发。
 
+![](.gitbook/assets/b0332b90-540b-11e6-8901-1b70fca926d3.png)
+
 ## 2. 为什么要组件化 <a id="2-&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7EC4;&#x4EF6;&#x5316;"></a>
 
 一个 APP 有多个模块，模块之间会通信，互相调用，如证券app，有首页、行情、资讯、我的等模块。这些模块会互相调用，例如 首页底部需要展示部分资讯、行情；行情底部需要展示个股资讯；资讯详情页需要跳转到行情，等等。
@@ -37,7 +39,11 @@ description: >-
 
 项目初期推荐这样快速开发，但到了项目越来越庞大，这种方式会有什么问题呢？显而易见，每个模块都离不开其他模块，互相依赖粘在一起成为一坨：
 
+![](.gitbook/assets/component1.png)
+
 这样揉成一坨对测试/编译/开发效率/后续扩展都有一些坏处，那怎么解开这一坨呢。很简单，按软件工程的思路，下意识就会加一个中间层：
+
+![](.gitbook/assets/component2-1024x597.png)
 
 合格的Mediator需要有这几个主要职责：
 
@@ -93,6 +99,8 @@ URL路由方案有很多开源库，例如[JLRoutes](https://github.com/joeldev/
 
 蘑菇街页面间的调用采用了`MGJRouter`，UML图如下。各个组件初始化时向 Mediator 注册对外提供的接口，Mediator 通过保存在内存的表去知道有哪些模块哪些接口，接口的形式是 URL-&gt;block。
 
+![](.gitbook/assets/vrt14algbk.png)
+
 每个组件间都会向MGJRouter注册，组件间相互调用或者是其他的App都可以通过openURL:方法打开一个界面或者调用一个组件。
 
 ```objectivec
@@ -142,6 +150,8 @@ typedef void (^componentBlock) (id param);
 * 不能传递NSObject的参数
 
 远程调用是本地调用的子集，这里混在一起导致组件只能提供子集功能，无法提供全集功能。所以这个方案是天生有缺陷的，对于遗漏的这部分功能，蘑菇街使用了另一种Protocol方案补全。
+
+![](.gitbook/assets/sjka1frbqm.png)
 
 ### Protocol方案 <a id="protocol&#x65B9;&#x6848;"></a>
 
@@ -236,6 +246,8 @@ Zuik在[iOS VIPER架构实践\(三\)：面向接口的路由设计](https://juej
 ### Target-Action方案 <a id="target-action&#x65B9;&#x6848;"></a>
 
 Target-Action方案的开源代表是[CTMediator](https://link.juejin.im/?target=https%3A%2F%2Fcasatwy.com%2FiOS-Modulization.html)\(`star 2175`\)，主要思路是组件通过中间件通信，中间件通过 runtime 接口解耦，通过 target-action 简化写法（target对应调用的模块`class`，action对应调用模块的接口`selector`），通过 category 感官上分离组件接口代码，减小单一Mediator的文件长度，对应的架构图就变成：
+
+![](.gitbook/assets/component31-1024x548.png)
 
 #### 优点 <a id="&#x4F18;&#x70B9;"></a>
 

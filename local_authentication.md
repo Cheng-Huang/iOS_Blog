@@ -2,7 +2,7 @@
 description: LocalAuthentication
 ---
 
-# 本地身份验证（TouchID&FaceID）
+# 本地身份验证（TouchID & FaceID）
 
 Tag: `生物认证`｜`指纹`\|`面容`\|`Touch ID`｜`Face ID`｜`LAContext`
 

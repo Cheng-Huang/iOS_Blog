@@ -6,9 +6,11 @@ description: 'https://huang-cheng.gitbook.io/ios/'
 
 ## 目录
 
-{% page-ref page="review-1.md" %}
+{% page-ref page="component\_based\_architecture.md" %}
 
-{% page-ref page="review-2.md" %}
+{% page-ref page="inheritance\_and\_iop.md" %}
+
+{% page-ref page="local\_authentication.md" %}
 
 
 

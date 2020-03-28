@@ -23,7 +23,7 @@ Platform: iOS 8 ~ iOS 13
 * **LABiometryTypeFaceID**：本机支持面容 Face ID
 * **LABiometryNone**：本机不支持生物认证
 
-```text
+```objectivec
 - (BOOL)canEvaluatePolicy:(LAPolicy)policy error:(NSError * __autoreleasing *)error
 ```
 
@@ -31,7 +31,7 @@ Platform: iOS 8 ~ iOS 13
 
 > 注意：`evaluatedPolicyDomainState`在`canEvaluatePolicy:error:`返回YES后或`evaluatePolicy:localizedReason:reply:`调用后，才能在context中获取。
 
-```text
+```objectivec
 - (void)evaluatePolicy:(LAPolicy)policy
        localizedReason:(NSString *)localizedReason
                  reply:(void(^)(BOOL success, NSError * __nullable error))reply
@@ -46,7 +46,7 @@ Platform: iOS 8 ~ iOS 13
 
 现有的验证方法包含 Touch ID 、 Face ID 和 锁屏密码。苹果将这3种验证方法划分为以下2种验证方式。
 
-```text
+```objectivec
 LAPolicyDeviceOwnerAuthenticationWithBiometrics // API_AVAILABLE(ios(8.0))
 LAPolicyDeviceOwnerAuthentication // API_AVAILABLE(ios(9.0))
 ```
@@ -84,7 +84,7 @@ LAPolicyDeviceOwnerAuthentication // API_AVAILABLE(ios(9.0))
 | LAErrorBiometryLockout（iOS11 - iOS13） | kLAErrorTouchIDLockout | -8 |
 | LAErrorNotInteractive | kLAErrorNotInteractive | -1004 |
 
-```text
+```objectivec
 LAErrorAuthenticationFailed // 身份验证失败
 
 LAErrorUserCancel // 身份验证被用户手动取消
